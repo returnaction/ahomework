@@ -4,6 +4,8 @@ public class Main {
         printThreeWords();
         // Task 2
         checkSumSign();
+        // Task 3
+        printColor();
     }
 
     // Task 1
@@ -22,6 +24,20 @@ public class Main {
             System.out.println("Сумма положительная");
         } else {
             System.out.println("Сумма отрицательная");
+        }
+    }
+
+    // Task 3
+    private static void printColor(){
+        int value = -2;
+        if(value <= 0){
+            System.out.println("Красный");
+        }
+        if(value > 0 && value <= 100){
+            System.out.println("Желтый");
+        }
+        if( value > 100){
+            System.out.println("Зеленый");
         }
     }
 }

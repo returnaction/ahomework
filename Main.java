@@ -8,8 +8,11 @@ public class Main {
         printColor();
         // Task 4
         compareNumbers();
-        //Task 5
+        // Task 5
         boolean result = sumOfNumbersBetween10and20(5,6);
+        // Task 6
+        checkNumberOddOrEven(5);
+        checkNumberOddOrEven(-1);
     }
 
     // Task 1
@@ -59,5 +62,15 @@ public class Main {
     // Task 5
     private static boolean sumOfNumbersBetween10and20(int num1, int num2){
         return num1 + num2 >=10 && num1 + num2 <= 20;
+    }
+
+    // Task 6
+    private static void checkNumberOddOrEven(int num){
+        if(num >=0)
+            System.out.println(num + " - число положительное.");
+        else {
+            System.out.println(num + " - число отрицательное.");
+        }
+
     }
 }

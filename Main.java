@@ -6,6 +6,8 @@ public class Main {
         checkSumSign();
         // Task 3
         printColor();
+        // Task 4
+        compareNumbers();
     }
 
     // Task 1
@@ -38,6 +40,17 @@ public class Main {
         }
         if( value > 100){
             System.out.println("Зеленый");
+        }
+    }
+
+    // Task 4
+    private static void compareNumbers(){
+        int a = (int) (Math.random() * 100);
+        int b = (int) (Math.random() * 100);
+        if( a >= b){
+            System.out.println("a >= b");
+        } else{
+            System.out.println("a < b");
         }
     }
 }

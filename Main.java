@@ -8,6 +8,8 @@ public class Main {
         printColor();
         // Task 4
         compareNumbers();
+        //Task 5
+        boolean result = sumOfNumbersBetween10and20(5,6);
     }
 
     // Task 1
@@ -52,5 +54,10 @@ public class Main {
         } else{
             System.out.println("a < b");
         }
+    }
+
+    // Task 5
+    private static boolean sumOfNumbersBetween10and20(int num1, int num2){
+        return num1 + num2 >=10 && num1 + num2 <= 20;
     }
 }

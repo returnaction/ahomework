@@ -1,40 +1,62 @@
+import java.sql.SQLOutput;
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) {
         // Task 1
         printThreeWords();
+
         // Task 2
         checkSumSign();
+
         // Task 3
         printColor();
+
         // Task 4
         compareNumbers();
+
         // Task 5
-        boolean result = sumOfNumbersBetween10and20(5,6);
+        boolean result = sumOfNumbersBetween10and20(5, 6);
+
         // Task 6
         printNumberOddOrEven(5);
         printNumberOddOrEven(-1);
+
         // Task 7
         boolean result2 = numberPositiveOrNegative(5);
         boolean result3 = numberPositiveOrNegative(-5);
+
         // Task 8
         printLine(3, "Nikita loves Java");
+
         // Task 9
         boolean result4 = checkYearType(2020);
+
+        // Task 10
+        int[] arr = {1, 1, 0, 0, 1, 0, 1, 1, 0, 0};
+        System.out.println("Array before inverting " + Arrays.toString(arr));
+        arrChange1to0and0to1(arr);
+        System.out.println("Array after inverting " + Arrays.toString(arr));
+
+        // Task 11
+        int[] arrray100 = new int[100];
+        fillArrayfrom1to100(arrray100);
+        System.out.println(Arrays.toString(arrray100));
     }
 
     // Task 1
-    private static void printThreeWords(){
+    private static void printThreeWords() {
         System.out.println("Orange");
         System.out.println("Banana");
         System.out.println("Apple");
     }
 
     // Task 2
-    private static void checkSumSign(){
+    private static void checkSumSign() {
         int a = 5;
         int b = 10;
 
-        if( a + b > 0){
+        if (a + b > 0) {
             System.out.println("Сумма положительная");
         } else {
             System.out.println("Сумма отрицательная");
@@ -42,38 +64,38 @@ public class Main {
     }
 
     // Task 3
-    private static void printColor(){
+    private static void printColor() {
         int value = -2;
-        if(value <= 0){
+        if (value <= 0) {
             System.out.println("Красный");
         }
-        if(value > 0 && value <= 100){
+        if (value > 0 && value <= 100) {
             System.out.println("Желтый");
         }
-        if( value > 100){
+        if (value > 100) {
             System.out.println("Зеленый");
         }
     }
 
     // Task 4
-    private static void compareNumbers(){
+    private static void compareNumbers() {
         int a = (int) (Math.random() * 100);
         int b = (int) (Math.random() * 100);
-        if( a >= b){
+        if (a >= b) {
             System.out.println("a >= b");
-        } else{
+        } else {
             System.out.println("a < b");
         }
     }
 
     // Task 5
-    private static boolean sumOfNumbersBetween10and20(int num1, int num2){
-        return num1 + num2 >=10 && num1 + num2 <= 20;
+    private static boolean sumOfNumbersBetween10and20(int num1, int num2) {
+        return num1 + num2 >= 10 && num1 + num2 <= 20;
     }
 
     // Task 6
-    private static void printNumberOddOrEven(int num){
-        if(num >=0)
+    private static void printNumberOddOrEven(int num) {
+        if (num >= 0)
             System.out.println(num + " - число положительное.");
         else {
             System.out.println(num + " - число отрицательное.");
@@ -82,27 +104,42 @@ public class Main {
     }
 
     // Task 7
-    private static boolean numberPositiveOrNegative(int num){
+    private static boolean numberPositiveOrNegative(int num) {
         return num >= 0;
     }
 
     // Task 8
-    private static void printLine(int num, String text){
+    private static void printLine(int num, String text) {
         for (int i = 0; i < num; i++) {
             System.out.println(text);
         }
     }
 
     // Task 9
-    private static boolean checkYearType(int year){
+    private static boolean checkYearType(int year) {
         // 0004 0008 0012 0016 0020 0024  и 400 и 4
         // 100
-        if(year % 400 == 0)
+        if (year % 400 == 0)
             return true;
-        if(year % 4 == 0 && year % 100 != 0){
+        if (year % 4 == 0 && year % 100 != 0) {
             return true;
         }
         return false;
     }
+
+    // Task 10
+    private static void arrChange1to0and0to1(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] ^= 1;
+        }
+    }
+
+    // Task 11
+    private static void fillArrayfrom1to100(int[] arr){
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = i + 1;
+        }
+    }
+
 
 }

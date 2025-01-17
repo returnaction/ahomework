@@ -39,15 +39,25 @@ public class Main {
         System.out.println("Array after inverting " + Arrays.toString(arr));
 
         // Task 11
-        int[] arrray100 = new int[100];
-        fillArrayfrom1to100(arrray100);
-        System.out.println(Arrays.toString(arrray100));
+        int[] array100 = new int[100];
+        fillArrayFrom1to100(array100);
+        System.out.println(Arrays.toString(array100));
 
         // Task 12
         int[] arr12 = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
         System.out.println("Task 12 before - " + Arrays.toString(arr12));
         multiplyByTwoNumbersMoreThanSix(arr12);
         System.out.println("Task 12 after - " + Arrays.toString(arr12));
+
+        // Task13
+        int[][] resultArr = createArrayTwoDimension();
+        // вывод на экран
+        for (int i = 0; i < resultArr.length; i++) {
+            for (int j = 0; j < resultArr[i].length; j++) {
+                System.out.print(resultArr[i][j]);
+            }
+            System.out.println();
+        }
 
     }
 
@@ -142,7 +152,7 @@ public class Main {
     }
 
     // Task 11
-    private static void fillArrayfrom1to100(int[] arr) {
+    private static void fillArrayFrom1to100(int[] arr) {
         for (int i = 0; i < arr.length; i++) {
             arr[i] = i + 1;
         }
@@ -154,6 +164,26 @@ public class Main {
             if (arr[i] < 6)
                 arr[i] *= 2;
         }
+    }
+
+    // Task 13
+    private static int[][] createArrayTwoDimension() {
+        int[][] arr = new int[5][5];
+
+        for (int i = 0; i < arr.length; i++) {
+            for (int y = 0; y < arr[i].length; y++) {
+                // c лево на право
+                if (i == y) {
+                    arr[i][y] = 1;
+                }
+                // с право на лево
+                if (arr.length - (i + y + 1) == 0) {
+                    arr[i][y] = 1;
+                }
+            }
+        }
+
+        return arr;
     }
 
 

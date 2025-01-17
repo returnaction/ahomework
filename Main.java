@@ -16,9 +16,10 @@ public class Main {
         // Task 7
         boolean result2 = numberPositiveOrNegative(5);
         boolean result3 = numberPositiveOrNegative(-5);
-
         // Task 8
         printLine(3, "Nikita loves Java");
+        // Task 9
+        boolean result4 = checkYearType(2020);
     }
 
     // Task 1
@@ -90,6 +91,18 @@ public class Main {
         for (int i = 0; i < num; i++) {
             System.out.println(text);
         }
+    }
+
+    // Task 9
+    private static boolean checkYearType(int year){
+        // 0004 0008 0012 0016 0020 0024  и 400 и 4
+        // 100
+        if(year % 400 == 0)
+            return true;
+        if(year % 4 == 0 && year % 100 != 0){
+            return true;
+        }
+        return false;
     }
 
 }

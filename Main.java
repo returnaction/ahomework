@@ -16,6 +16,9 @@ public class Main {
         // Task 7
         boolean result2 = numberPositiveOrNegative(5);
         boolean result3 = numberPositiveOrNegative(-5);
+
+        // Task 8
+        printLine(3, "Nikita loves Java");
     }
 
     // Task 1
@@ -80,6 +83,13 @@ public class Main {
     // Task 7
     private static boolean numberPositiveOrNegative(int num){
         return num >= 0;
+    }
+
+    // Task 8
+    private static void printLine(int num, String text){
+        for (int i = 0; i < num; i++) {
+            System.out.println(text);
+        }
     }
 
 }

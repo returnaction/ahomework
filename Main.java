@@ -11,8 +11,11 @@ public class Main {
         // Task 5
         boolean result = sumOfNumbersBetween10and20(5,6);
         // Task 6
-        checkNumberOddOrEven(5);
-        checkNumberOddOrEven(-1);
+        printNumberOddOrEven(5);
+        printNumberOddOrEven(-1);
+        // Task 7
+        boolean result2 = numberPositiveOrNegative(5);
+        boolean result3 = numberPositiveOrNegative(-5);
     }
 
     // Task 1
@@ -65,7 +68,7 @@ public class Main {
     }
 
     // Task 6
-    private static void checkNumberOddOrEven(int num){
+    private static void printNumberOddOrEven(int num){
         if(num >=0)
             System.out.println(num + " - число положительное.");
         else {
@@ -73,4 +76,10 @@ public class Main {
         }
 
     }
+
+    // Task 7
+    private static boolean numberPositiveOrNegative(int num){
+        return num >= 0;
+    }
+
 }

@@ -59,6 +59,10 @@ public class Main {
             System.out.println();
         }
 
+        // Task14
+        int[] arrTask14 = makeArray(5, 66);
+        System.out.println(Arrays.toString(arrTask14));
+
     }
 
     // Task 1
@@ -186,5 +190,13 @@ public class Main {
         return arr;
     }
 
+    // Task 14
+    private static int[] makeArray(int len, int initialValue){
+        int[] arr = new int[len];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = initialValue;
+        }
+        return arr;
+    }
 
 }

@@ -42,6 +42,13 @@ public class Main {
         int[] arrray100 = new int[100];
         fillArrayfrom1to100(arrray100);
         System.out.println(Arrays.toString(arrray100));
+
+        // Task 12
+        int[] arr12 = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
+        System.out.println("Task 12 before - " + Arrays.toString(arr12));
+        multiplyByTwoNumbersMoreThanSix(arr12);
+        System.out.println("Task 12 after - " + Arrays.toString(arr12));
+
     }
 
     // Task 1
@@ -135,9 +142,17 @@ public class Main {
     }
 
     // Task 11
-    private static void fillArrayfrom1to100(int[] arr){
+    private static void fillArrayfrom1to100(int[] arr) {
         for (int i = 0; i < arr.length; i++) {
             arr[i] = i + 1;
+        }
+    }
+
+    // Task 12
+    private static void multiplyByTwoNumbersMoreThanSix(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] < 6)
+                arr[i] *= 2;
         }
     }
 

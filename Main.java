@@ -1,5 +1,6 @@
 import java.sql.SQLOutput;
 import java.util.Arrays;
+import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
@@ -17,6 +18,7 @@ public class Main {
 
         // Task 5
         boolean result = sumOfNumbersBetween10and20(5, 6);
+        System.out.println("Task #5 sumOfNumbersBetween10and20 = " + result);
 
         // Task 6
         printNumberOddOrEven(5);
@@ -24,13 +26,16 @@ public class Main {
 
         // Task 7
         boolean result2 = numberPositiveOrNegative(5);
+        System.out.println("Task #7 numberPositiveOrNegative = " + result2);
         boolean result3 = numberPositiveOrNegative(-5);
+        System.out.println("Task #7 numberPositiveOrNegative = " + result3);
 
         // Task 8
         printLine(3, "Nikita loves Java");
 
         // Task 9
         boolean result4 = checkYearType(2020);
+        System.out.println("Task #9 checkYearType = " + result4);
 
         // Task 10
         int[] arr = {1, 1, 0, 0, 1, 0, 1, 1, 0, 0};
@@ -74,10 +79,11 @@ public class Main {
 
     // Task 2
     private static void checkSumSign() {
-        int a = 5;
-        int b = 10;
+        Random rnd = new Random();
+        int a = rnd.nextInt(201) - 100;
+        int b = rnd.nextInt(201) - 100;
 
-        if (a + b > 0) {
+        if (a + b >= 0) {
             System.out.println("Сумма положительная");
         } else {
             System.out.println("Сумма отрицательная");
@@ -103,9 +109,9 @@ public class Main {
         int a = (int) (Math.random() * 100);
         int b = (int) (Math.random() * 100);
         if (a >= b) {
-            System.out.println("a >= b");
+            System.out.println(a + " >= " + b);
         } else {
-            System.out.println("a < b");
+            System.out.println(a + " < " + b);
         }
     }
 

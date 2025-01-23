@@ -1,8 +1,8 @@
 package Task2;
 
 public class AbstractFigure {
-    String backgroundColor;
-    String borderColor;
+    final String backgroundColor;
+    final String borderColor;
 
     public AbstractFigure(String backgroundColor, String borderColor) {
         this.backgroundColor = backgroundColor;

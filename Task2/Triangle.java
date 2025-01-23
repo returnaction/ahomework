@@ -1,9 +1,9 @@
 package Task2;
 
 public class Triangle extends AbstractFigure implements Figure{
-    private double sideA;
-    private double sideB;
-    private double sideC;
+    private final double sideA;
+    private final double sideB;
+    private final double sideC;
 
     public Triangle(String backgroundColor, String borderColor, double sideA, double sideB, double sideC) {
         super(backgroundColor, borderColor);

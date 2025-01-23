@@ -1,7 +1,7 @@
 package Task2;
 
  class Circle extends AbstractFigure implements Figure {
-     double radius;
+     final double radius;
 
      public Circle(String backgroundColor, String borderColor, double radius) {
          super(backgroundColor, borderColor);

@@ -2,8 +2,8 @@ package Task2;
 
 public class Rectangular extends AbstractFigure implements Figure{
 
-    private double width;
-    private double length;
+    private final double width;
+    private final double length;
 
     public Rectangular(String backgroundColor, String borderColor, double width, double length) {
         super(backgroundColor, borderColor);

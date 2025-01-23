@@ -12,7 +12,7 @@ public abstract class Animal {
 
      void run(int runDistance){
         if(runDistance > maxRunDistance){
-            System.out.println("Я не могу побежать " + runDistance + " столько метров!");
+            System.out.println(name + " не могу побежать " + runDistance + " столько метров!");
             System.out.println(name + " пробежал(а) " + maxRunDistance + " метров");
             return;
         }

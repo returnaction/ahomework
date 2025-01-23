@@ -1,3 +1,5 @@
+package Task1;
+
 public class Main {
     public static void main(String[] args) {
         Dog dog1 = new Dog("Тузик", 1, 5);

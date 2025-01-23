@@ -1,3 +1,5 @@
+package Task1;
+
 public class Dog extends Animal{
     private static int totalCreatedDogs;
     int maxSwimDistance;
@@ -29,7 +31,7 @@ public class Dog extends Animal{
 
     @Override
     public String toString() {
-        return "Dog{" +
+        return "Task1.Dog{" +
                 "maxSwimDistance=" + maxSwimDistance +
                 ", name='" + name + '\'' +
                 ", age=" + age +

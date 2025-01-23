@@ -1,3 +1,5 @@
+package Task1;
+
 public class Bowl {
     private int foodCapacity;
     private final int MAX_CAPACITY = 100;

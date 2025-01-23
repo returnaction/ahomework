@@ -1,3 +1,5 @@
+package Task1;
+
 public class Cat extends Animal{
     private static int totalCreatedCats;
     private boolean isHungry;
@@ -39,7 +41,7 @@ public class Cat extends Animal{
 
     @Override
     public String toString() {
-        return "Cat{" +
+        return "Task1.Cat{" +
                 "isHungry=" + isHungry +
                 ", name='" + name + '\'' +
                 ", age=" + age +

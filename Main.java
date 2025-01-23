@@ -1,7 +1,7 @@
 public class Main {
     public static void main(String[] args) {
-        Dog dog1 = new Dog("Tuzikk", 1, 5);
-        Dog dog2 = new Dog("Shashlik", 1, 6);
+        Dog dog1 = new Dog("Тузик", 1, 5);
+        Dog dog2 = new Dog("Шашлык", 1, 6);
         System.out.println("Общее количество созданных собак " + Dog.getTotalCreatedDogs());
         System.out.println("\n\tЗдесь собаки плавают");
         dog1.swim(5);
@@ -46,22 +46,21 @@ public class Main {
         // Метод сделан так что у каждой кошки нужно разное количество корма.
         // Даже если одна не сможет поесть, так как не хватает корма, то другая кошка все равно сможет полакомиться.
         System.out.println("\n\tЗдесь кошки кушают");
-        for(Cat cat : cats){
+        for (Cat cat : cats) {
             cat.eat(bowl);
         }
 
 
         System.out.println("\n\tЗдесь добавим в миску корма и покорим кошек еще раз. Так как не все покушали");
         bowl.addFood(100);
-        for(Cat cat : cats){
+        for (Cat cat : cats) {
             cat.eat(bowl);
         }
 
         // Здесь сделаем всех кошек голодными
-        for(Cat cat : cats){
+        for (Cat cat : cats) {
             cat.setHungry();
         }
-
 
 
     }

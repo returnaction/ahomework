@@ -7,25 +7,25 @@ public class Bowl {
 
     }
 
-     void addFood(int foodCapacity) {
+    void addFood(int foodCapacity) {
         if (foodCapacity > MAX_CAPACITY)
             this.foodCapacity = MAX_CAPACITY;
         else {
             // тут вторая проверка так как у нас уже может быть еда в миске после того как покушали коты и нужно сверить
             // что бы не загрузили больше чем 100 корма.
-            if(this.foodCapacity + foodCapacity > MAX_CAPACITY){
+            if (this.foodCapacity + foodCapacity > MAX_CAPACITY) {
                 this.foodCapacity = MAX_CAPACITY;
-            } else{
-            this.foodCapacity = foodCapacity;
+            } else {
+                this.foodCapacity = foodCapacity;
             }
         }
     }
 
-     int getFoodCapacity() {
+    int getFoodCapacity() {
         return foodCapacity;
     }
 
-    void servePortion(int amount){
+    void servePortion(int amount) {
         foodCapacity -= amount;
     }
 }

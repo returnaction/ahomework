@@ -5,6 +5,7 @@ public class Triangle extends AbstractFigure implements Figure{
     private final double sideB;
     private final double sideC;
 
+    // у треугольника тут вообще должны быть проверка, что две стороны должны быть длиннее чем другая сторона
     public Triangle(String backgroundColor, String borderColor, double sideA, double sideB, double sideC) {
         super(backgroundColor, borderColor);
         this.sideA = sideA;

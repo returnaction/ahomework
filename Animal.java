@@ -19,5 +19,19 @@ public abstract class Animal {
             System.out.println(name + " пробежал(а) " + runDistance + " метров");
      }
 
+    public String getName() {
+        return name;
+    }
 
+    public int getAge() {
+        return age;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public int getMaxRunDistance() {
+        return maxRunDistance;
+    }
 }

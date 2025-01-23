@@ -25,10 +25,10 @@ public class Main {
         printNumberOddOrEven(-1);
 
         // Task 7
-        boolean result2 = numberPositiveOrNegative(5);
-        System.out.println("Task #7 numberPositiveOrNegative = " + result2);
-        boolean result3 = numberPositiveOrNegative(-5);
-        System.out.println("Task #7 numberPositiveOrNegative = " + result3);
+        boolean result2 = numberIsNegative(5);
+        System.out.println("Task #7 numberIsNegative(5) = " + result2);
+        boolean result3 = numberIsNegative(-5);
+        System.out.println("Task #7 numberIsNegative(-5) = " + result3);
 
         // Task 8
         printLine(3, "Nikita loves Java");
@@ -84,9 +84,9 @@ public class Main {
         int b = rnd.nextInt(201) - 100;
 
         if (a + b >= 0) {
-            System.out.println("Сумма положительная");
+            System.out.println("Task2 = Сумма " + a + " и " + b +" положительная");
         } else {
-            System.out.println("Сумма отрицательная");
+            System.out.println("Task2 = Сумма " + a + " и " + b +"  отрицательная");
         }
     }
 
@@ -131,8 +131,8 @@ public class Main {
     }
 
     // Task 7
-    private static boolean numberPositiveOrNegative(int num) {
-        return num >= 0;
+    private static boolean numberIsNegative(int num) {
+        return num < 0;
     }
 
     // Task 8

@@ -29,13 +29,13 @@ public class Main {
         fillArray(arr2, 1);
         testTheArray(arr2);
 
-        // Здесь делаем новый массив что на 4х3 что бы вызвало исключение MyArraysSizeException
+        // Здесь делаем новый массив что на 4х5 что бы вызвало исключение MyArraysSizeException
         System.out.println("\n\tЗдесь должно вызвать исключение  MyArrayDataException");
         String[][] arr3 = new String[4][5];
         fillArray(arr3, 1);
         testTheArray(arr2);
 
-        // Здесь делаем новый массив что на 4х3 что бы вызвало исключение MyArraysSizeException
+        // Здесь делаем новый массив что на 3х4 что бы вызвало исключение MyArraysSizeException
         System.out.println("\n\tЗдесь должно вызвать исключение  MyArrayDataException");
         String[][] arr4 = new String[3][4];
         fillArray(arr4, 1);

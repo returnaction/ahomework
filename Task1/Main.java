@@ -1,69 +1,86 @@
 package Task1;
 
+import org.w3c.dom.ls.LSOutput;
+
 public class Main {
     public static void main(String[] args) {
-        Dog dog1 = new Dog("Тузик", 1, 5);
-        Dog dog2 = new Dog("Шашлык", 1, 6);
-        System.out.println("Общее количество созданных собак " + Dog.getTotalCreatedDogs());
-        System.out.println("\n\tЗдесь собаки плавают");
-        dog1.swim(5);
-        dog2.swim(15);
+        // Здесь заполняем массив корректными данными от 1 до 16
+        // Здесь должна быть корректная сумма = 136
+        System.out.println("Должно пройти без исключений");
+        String[][] arr1 = new String[4][4];
+        fillArray(arr1, 1);
+        testTheArray(arr1);
 
 
-        System.out.println("\n\tЗдесь собаки бегают");
-        dog1.run(300);
-        dog2.run(600);
+        // меняем у массива на что бы вызвало исключение MyArrayDataException;
+        System.out.println("\n\tДолжно вызвать исключение MyArrayDataException и вывод ячейки");
+        arr1[1][0] = "A5";
+        testTheArray(arr1);
 
+        // меняем у массива на что бы вызвало исключение MyArrayDataException;
+        System.out.println("\n\tДолжно вызвать исключение MyArrayDataException и вывод ячейки");
+        arr1[1][0] = "5";
+        arr1[1][3] = "8F";
+        testTheArray(arr1);
 
-        Cat[] cats = new Cat[9];
-        Cat cat1 = new Cat("Борис", 2, 6);
-        Cat cat2 = new Cat("Барсик", 5, 7);
-        Cat cat3 = new Cat("Машка", 3, 2);
-        Cat cat4 = new Cat("Зося", 2, 12);
-        Cat cat5 = new Cat("Васька", 1, 8);
-        Cat cat6 = new Cat("Рыжик", 1, 8);
-        Cat cat7 = new Cat("Пушистик", 12, 8);
-        Cat cat8 = new Cat("Взятка", 13, 8);
-        Cat cat9 = new Cat("Незнайка", 5, 8);
+        // Здесь делаем новый массив что на 4х3 что бы вызвало исключение MyArraysSizeException
+        System.out.println("\n\tЗдесь должно вызвать исключение  MyArrayDataException");
+        String[][] arr2 = new String[4][3];
+        fillArray(arr2, 1);
+        testTheArray(arr2);
 
-        cats[0] = cat1;
-        cats[1] = cat2;
-        cats[2] = cat3;
-        cats[3] = cat4;
-        cats[4] = cat5;
-        cats[5] = cat6;
-        cats[6] = cat7;
-        cats[7] = cat8;
-        cats[8] = cat9;
-        System.out.println("\nОбщее количество созданных кошек " + Cat.getTotalCreatedCats());
+        // Здесь делаем новый массив что на 4х3 что бы вызвало исключение MyArraysSizeException
+        System.out.println("\n\tЗдесь должно вызвать исключение  MyArrayDataException");
+        String[][] arr3 = new String[4][5];
+        fillArray(arr3, 1);
+        testTheArray(arr2);
 
-        System.out.println("\n\tЗдесь кошки бегают");
-        cat1.run(150);
-        cat2.run(201);
+        // Здесь делаем новый массив что на 4х3 что бы вызвало исключение MyArraysSizeException
+        System.out.println("\n\tЗдесь должно вызвать исключение  MyArrayDataException");
+        String[][] arr4 = new String[3][4];
+        fillArray(arr4, 1);
+        testTheArray(arr2);
 
-        System.out.println("\n\t Здесь создаём миску");
-        Bowl bowl = new Bowl(120);
-        System.out.println("Емкость миски = " + bowl.getFoodCapacity());
+    }
 
-        // Метод сделан так что у каждой кошки нужно разное количество корма.
-        // Даже если одна не сможет поесть, так как не хватает корма, то другая кошка все равно сможет полакомиться.
-        System.out.println("\n\tЗдесь кошки кушают");
-        for (Cat cat : cats) {
-            cat.eat(bowl);
+    static void testTheArray(String[][] arr){
+        try{
+            int sumOfArray = arraySum(arr);
+            System.out.println("Сумма массива: " + sumOfArray);
+        } catch(MyArraySizeException | MyArrayDataException e){
+            System.out.println(e.getClass().getSimpleName() + " : " + e.getMessage());
         }
+    }
 
-
-        System.out.println("\n\tЗдесь добавим в миску корма и покорим кошек еще раз. Так как не все покушали");
-        bowl.addFood(100);
-        for (Cat cat : cats) {
-            cat.eat(bowl);
+    static void fillArray(String[][] arr, int value){
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length; j++) {
+                arr[i][j] = String.valueOf(value++);
+                System.out.print(arr[i][j].toString() + " ");
+            }
+            System.out.println();
         }
+    }
 
-        // Здесь сделаем всех кошек голодными
-        for (Cat cat : cats) {
-            cat.setHungry();
+    static int arraySum(String[][] arr){
+
+        if(!(arr.length == 4 &&
+        arr[0].length == 4 &&
+        arr[1].length == 4 &&
+        arr[2].length == 4 &&
+        arr[3].length == 4)){
+            throw new MyArraySizeException("Массив должен быть 4 на 4");
         }
-
-
+        int sum = 0;
+        for(int i=0; i<arr.length; i++){
+            for(int j=0; j<arr[i].length; j++){
+                try{
+                    sum += Integer.parseInt(arr[i][j]);
+                } catch (NumberFormatException e){
+                    throw new MyArrayDataException("\nВ ячейке - [" + i + "][" + j + "] - " + arr[i][j] + " некорректные данные");
+                }
+            }
+        }
+        return sum;
     }
 }

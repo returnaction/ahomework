@@ -1,3 +1,5 @@
+package Task1;
+
 import java.util.*;
 
 public class Main {
@@ -21,6 +23,7 @@ public class Main {
             }
         }
 
+        // Количество раз каждое слово встречается
         for( Map.Entry<String, Integer> entry : wordsCount.entrySet()){
             System.out.println(entry.getKey() + " : " + entry.getValue());
         }

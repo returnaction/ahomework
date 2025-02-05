@@ -1,15 +1,49 @@
 package example;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Park {
-    class FerrisWheel{
-        String name;
-        String openHours;
-        double price;
+    private String parkName;
+    private List<Attraction> attractionList;
 
-        public FerrisWheel(String name, String openHours, double price) {
+    public Park(String parkName) {
+        this.attractionList = new ArrayList<>();
+        this.parkName = parkName;
+    }
+
+    public String getParkName() {
+        return parkName;
+    }
+
+    public void setParkName(String parkName) {
+        this.parkName = parkName;
+    }
+
+    public List<Attraction> getAttractionList() {
+        return attractionList;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Park{" +
+                "parkName='" + parkName + '\'' +
+                ", attractionList=" + attractionList +
+                '}';
+    }
+
+    public class Attraction {
+        private String name;
+        private double price;
+        private String openHours;
+
+        public Attraction(String name, double price, String openHours) {
             this.name = name;
-            this.openHours = openHours;
             this.price = price;
+            this.openHours = openHours;
+            Park.this.attractionList.add(this);
+
         }
 
         public String getName() {
@@ -20,49 +54,12 @@ public class Park {
             this.name = name;
         }
 
-        public String getOpenHours() {
-            return openHours;
-        }
-
-        public void setOpenHours(String openHours) {
-            this.openHours = openHours;
-        }
-
         public double getPrice() {
             return price;
         }
 
         public void setPrice(double price) {
             this.price = price;
-        }
-
-        @Override
-        public String toString() {
-            return "FerrisWheel{" +
-                    "name='" + name + '\'' +
-                    ", openHours='" + openHours + '\'' +
-                    ", price=" + price +
-                    '}';
-        }
-    }
-
-    class Slides{
-        String name;
-        String openHours;
-        double price;
-
-        public Slides(String name, String openHours, double price) {
-            this.name = name;
-            this.openHours = openHours;
-            this.price = price;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
         }
 
         public String getOpenHours() {
@@ -73,68 +70,17 @@ public class Park {
             this.openHours = openHours;
         }
 
-        public double getPrice() {
-            return price;
-        }
-
-        public void setPrice(double price) {
-            this.price = price;
-        }
-
         @Override
         public String toString() {
-            return "Slides{" +
+            return "Attraction{" +
                     "name='" + name + '\'' +
-                    ", openHours='" + openHours + '\'' +
                     ", price=" + price +
+                    ", openHours='" + openHours + '\'' +
                     '}';
         }
     }
 
-    class DeathRope{
-        String name;
-        String openHours;
-        double price;
 
-        public DeathRope(String name, String openHours, double price) {
-            this.name = name;
-            this.openHours = openHours;
-            this.price = price;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public String getOpenHours() {
-            return openHours;
-        }
-
-        public void setOpenHours(String openHours) {
-            this.openHours = openHours;
-        }
-
-        public double getPrice() {
-            return price;
-        }
-
-        public void setPrice(double price) {
-            this.price = price;
-        }
-
-        @Override
-        public String toString() {
-            return "DeathRope{" +
-                    "name='" + name + '\'' +
-                    ", openHours='" + openHours + '\'' +
-                    ", price=" + price +
-                    '}';
-        }
-    }
 
 
 }

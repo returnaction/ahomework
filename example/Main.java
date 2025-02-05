@@ -13,17 +13,10 @@ public class Main {
             emp.printInfo();
         }
 
-        Park park = new Park();
-
-        Park.FerrisWheel ferrisWheel = park.new FerrisWheel("Farry-theScary", "08.00-17.00", 19.95);
-        Park.DeathRope deathRope = park.new DeathRope("Rope of Death", "13.30-19.45", 24.99);
-        Park.Slides slides = park.new Slides("Slide the Bite", "11.00-17.00", 4.99);
-        System.out.println("\nNew park\n");
-        System.out.println(ferrisWheel + "\n");
-        System.out.println(deathRope + "\n");
-        System.out.println(slides + "\n");
-
-        System.out.println("Price for the " + deathRope.getName() + " is " + deathRope.getPrice());
-
+        Park park = new Park("Парк Челюскинцев");
+        park.new Attraction("Ferris wheel", 19.95, "08.00-17.00");
+        park.new Attraction("Rope of Death", 24.99, "13.30-19.45");
+        park.new Attraction("Slide the Bite", 4.99, "11.00-17.00");
+        System.out.println(park);
     }
 }

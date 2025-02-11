@@ -1,3 +1,5 @@
+package org.example;
+
 import java.util.Scanner;
 
 public class Main {
@@ -28,7 +30,7 @@ public class Main {
                     break;
                 }
             } catch (Exception e) {
-                System.out.println("Введите целое число");
+                System.out.println("\tВы ввели некорректные данные");
             }
         }
         sc.close();

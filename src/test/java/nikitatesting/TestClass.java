@@ -9,8 +9,8 @@ public class TestClass {
 
     @Test(description = "Проверяет обычные числа факториала", priority = 1)
     public void testFactorial(){
-        Assert.assertEquals(Main.factorial(6), 3);
-        Assert.assertEquals(Main.factorial(10), 3_628_880);
+        Assert.assertEquals(Main.factorial(3), 6);
+        Assert.assertEquals(Main.factorial(10), 3_628_800);
     }
 
     @Test(description = "Проверяет что факториал 0 равен 1", priority = 2)

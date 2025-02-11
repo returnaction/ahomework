@@ -14,5 +14,24 @@
 
     <dependencies>
         <!-- Сюда можно добавлять зависимости -->
+<!--        Добавляем наш jutin зависимость-->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.9.1</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
+
+<!--    Добавляем этот плагин что бы избежать кучу проблем-->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.7.1</version>
+            </plugin>
+        </plugins>
+    </build>
 </project>

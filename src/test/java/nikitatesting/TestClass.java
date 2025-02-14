@@ -7,6 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -65,12 +66,16 @@ public class TestClass {
     @Test
     @Order(5)
     public void testTheForm2(){
-        String cardNumberPlaceHolder = "Номер карты";
-        String exprationDatePlaceHolder = "Срок действия";
-        String cvcPlaceholder = "CVC";
-        String nameOfTheCardPlaceHolder = "Имя держателя (как на карте)";
 
-        homePage.fillPaymentsAndCheckTheSum("297777777", "10", "test@test.com");
+        List<String> values = homePage.fillPaymentsAndCheckTheSum("297777777", "10", "test@test.com");
+        assertEquals("10.00 BYN", values.get(0));
+        assertEquals("375297777777", values.get(1));
+        assertEquals("10.00 BYN", values.get(2));
+        assertEquals("Номер карты", values.get(3));
+        assertEquals("Срок действия", values.get(4));
+        assertEquals("CVC", values.get(5));
+        assertEquals("Имя держателя (как на карте)", values.get(6));
+        assertEquals("5", values.get(7));
     }
 
     @AfterEach

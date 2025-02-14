@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class HomePage {
@@ -125,64 +127,60 @@ public class HomePage {
         return confirmationWindow.getText().trim();
     }
 
-    public void fillPaymentsAndCheckTheSum(String phone, String amount, String email){
-        WebElement phoneField = waitForElement(phoneFieldLocator);
-        phoneField.click();
-        phoneField.sendKeys(phone);
+    public List<String> fillPaymentsAndCheckTheSum(String phone, String amount, String email){
+        // наверно лучше Map завтра я уже хрен вспомню что и где тут...ну тупой метод
+        fillPaymentForm(phone, amount, email);
+        switchToPaymentFrame();
 
-        WebElement amountField = waitForElement(amountFieldLocator);
-        amountField.click();
-        amountField.sendKeys(amount);
+        List<String> paymentDetails = new ArrayList<>();
+        paymentDetails.add(getPaymentAmount());
+        paymentDetails.add(getPhoneNumber());
+        paymentDetails.add(getPayButtonAmount());
+        paymentDetails.add(getCardPlaceholder(cardNumberPlaceHolderLocator));
+        paymentDetails.add(getCardPlaceholder(cardExparationPlaceHolderLocator));
+        paymentDetails.add(getCardPlaceholder(CVCPlaceHolderLocator));
+        paymentDetails.add(getCardPlaceholder(nameOfTheCardPlaceHolderLocator));
+        paymentDetails.add(getLogoCount());
 
-        WebElement emailField = waitForElement(emailFieldLocator);
-        emailField.click();
-        emailField.sendKeys(email);
+        return paymentDetails;
 
-        WebElement continueButton = waitForElement(continueButtonLocator);
-        continueButton.click();
+    }
 
+    private void fillPaymentForm(String phone, String amount, String email) {
+        waitForElement(phoneFieldLocator).sendKeys(phone);
+        waitForElement(amountFieldLocator).sendKeys(amount);
+        waitForElement(emailFieldLocator).sendKeys(email);
+        waitForElement(continueButtonLocator).click();
+    }
+
+    private void switchToPaymentFrame() {
         WebElement newFrame = waitForElement(iFrameLocator);
         driver.switchTo().frame(newFrame);
+    }
 
-        // сумма
-        WebElement amountElement = wait.until(ExpectedConditions.visibilityOfElementLocated(amountPaymentLocator));
-        String amountText = amountElement.getText();
-        //amountText = amountText.replace(".00 BYN", "");
-        System.out.println("Надпись в окошке: " + amountText);
+    // Получение суммы платежаа внутри iframe
+    private String getPaymentAmount() {
+        return waitForElementVisible(amountPaymentLocator).getText();
+    }
 
-        // номер телефона
-        WebElement phoneTextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(numberLocator));
-        String phoneText = phoneTextElement.getText();
-        phoneText = phoneText.replace("Оплата: Услуги связи Номер:", "");
-        System.out.println(phoneText);
+    // Получение номера телефона внутри iframe
+    private String getPhoneNumber() {
+        return waitForElementVisible(numberLocator).getText().replace("Оплата: Услуги связи Номер:", "").trim();
+    }
 
-        // сумма на кнопке
-        WebElement payButtonElement = wait.until(ExpectedConditions.visibilityOfElementLocated(payButtonLocator));
-        String payButtonText = payButtonElement.getText().replace("Оплатить ", "");
-        System.out.println("Надпись в кнопке оплатить: " + payButtonText);
+    // Получение суммы на кнопке внутри iframe
+    private String getPayButtonAmount() {
+        return waitForElementVisible(payButtonLocator).getText().replace("Оплатить ", "").trim();
+    }
 
-        // наличие иконок платежной системы.
-        List<WebElement> logos = driver.findElements(logosinPaymentLocator);
-        System.out.println("Количество иконок: " + logos.size());
+    // Получение количества логотипов платежных систем внутри iframe
+    private String getLogoCount() {
+        return String.valueOf(wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(logosinPaymentLocator)).size());
+    }
 
-        //надписи в незаполненых полях ввода.
-        WebElement cardNumberPlaceHolderElement = wait.until(ExpectedConditions.visibilityOfElementLocated(cardNumberPlaceHolderLocator));
-        String cardNumberPlaceHolderText = cardNumberPlaceHolderElement.getText();
-        System.out.println("Плэйсхолдер номер карты: " + cardNumberPlaceHolderText);
-
-        WebElement exparationDateElement = wait.until(ExpectedConditions.visibilityOfElementLocated(cardExparationPlaceHolderLocator));
-        String exparationDateText = exparationDateElement.getText();
-        System.out.println("Exparation Date PlaceHolder: " + exparationDateText);
-
-        WebElement cvcPlaceHolderElement = wait.until(ExpectedConditions.visibilityOfElementLocated(CVCPlaceHolderLocator));
-        String cvcPlaceHolderText = cvcPlaceHolderElement.getText();
-        System.out.println("CVC PlaceHolder: " + cvcPlaceHolderText);
-
-        WebElement nameOfTheCardPlaceHolderElement = wait.until(ExpectedConditions.visibilityOfElementLocated(nameOfTheCardPlaceHolderLocator));
-        String nameOfTheCardPlaceHolderText = nameOfTheCardPlaceHolderElement.getText();
-        System.out.println("Name Of Card PlaceHolder: " + nameOfTheCardPlaceHolderText);
-        System.out.println("here");
-
+    // Универсальный метод для получения текста плейсхоллдера внутри iframe
+    private String getCardPlaceholder(By locator) {
+        return waitForElementVisible(locator).getText();
     }
 
 
@@ -194,4 +192,69 @@ public class HomePage {
     protected List<WebElement> waitForElementList(By locator){
         return wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
     }
+
+    private WebElement waitForElementVisible(By locator) {
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
 }
+
+
+//public void fillPaymentsAndCheckTheSum(String phone, String amount, String email){
+//    WebElement phoneField = waitForElement(phoneFieldLocator);
+//    phoneField.click();
+//    phoneField.sendKeys(phone);
+//
+//    WebElement amountField = waitForElement(amountFieldLocator);
+//    amountField.click();
+//    amountField.sendKeys(amount);
+//
+//    WebElement emailField = waitForElement(emailFieldLocator);
+//    emailField.click();
+//    emailField.sendKeys(email);
+//
+//    WebElement continueButton = waitForElement(continueButtonLocator);
+//    continueButton.click();
+//
+//    WebElement newFrame = waitForElement(iFrameLocator);
+//    driver.switchTo().frame(newFrame);
+//
+//    // сумма
+//    WebElement amountElement = wait.until(ExpectedConditions.visibilityOfElementLocated(amountPaymentLocator));
+//    String amountText = amountElement.getText();
+//    //amountText = amountText.replace(".00 BYN", "");
+//    System.out.println("Надпись в окошке: " + amountText);
+//
+//    // номер телефона
+//    WebElement phoneTextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(numberLocator));
+//    String phoneText = phoneTextElement.getText();
+//    phoneText = phoneText.replace("Оплата: Услуги связи Номер:", "");
+//    System.out.println(phoneText);
+//
+//    // сумма на кнопке
+//    WebElement payButtonElement = wait.until(ExpectedConditions.visibilityOfElementLocated(payButtonLocator));
+//    String payButtonText = payButtonElement.getText().replace("Оплатить ", "");
+//    System.out.println("Надпись в кнопке оплатить: " + payButtonText);
+//
+//    // наличие иконок платежной системы.
+//    List<WebElement> logos = driver.findElements(logosinPaymentLocator);
+//    System.out.println("Количество иконок: " + logos.size());
+//
+//    //надписи в незаполненых полях ввода.
+//    WebElement cardNumberPlaceHolderElement = wait.until(ExpectedConditions.visibilityOfElementLocated(cardNumberPlaceHolderLocator));
+//    String cardNumberPlaceHolderText = cardNumberPlaceHolderElement.getText();
+//    System.out.println("Плэйсхолдер номер карты: " + cardNumberPlaceHolderText);
+//
+//    WebElement exparationDateElement = wait.until(ExpectedConditions.visibilityOfElementLocated(cardExparationPlaceHolderLocator));
+//    String exparationDateText = exparationDateElement.getText();
+//    System.out.println("Exparation Date PlaceHolder: " + exparationDateText);
+//
+//    WebElement cvcPlaceHolderElement = wait.until(ExpectedConditions.visibilityOfElementLocated(CVCPlaceHolderLocator));
+//    String cvcPlaceHolderText = cvcPlaceHolderElement.getText();
+//    System.out.println("CVC PlaceHolder: " + cvcPlaceHolderText);
+//
+//    WebElement nameOfTheCardPlaceHolderElement = wait.until(ExpectedConditions.visibilityOfElementLocated(nameOfTheCardPlaceHolderLocator));
+//    String nameOfTheCardPlaceHolderText = nameOfTheCardPlaceHolderElement.getText();
+//    System.out.println("Name Of Card PlaceHolder: " + nameOfTheCardPlaceHolderText);
+//    System.out.println("here");
+//
+//}
